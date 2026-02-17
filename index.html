@@ -2,126 +2,163 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Happy Valentine's Day 2026 💕 - Ridzz Creation</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700;800&family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         body {
-            font-family: 'Poppins', 'Quicksand', sans-serif;
+            font-family: 'Poppins', sans-serif;
             overflow-x: hidden;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffd1ff 100%);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior: none;
         }
 
         .font-pacifico { font-family: 'Pacifico', cursive; }
         .font-dancing { font-family: 'Dancing Script', cursive; }
-        .font-quicksand { font-family: 'Quicksand', sans-serif; }
 
-        /* Enhanced Floating Elements */
+        /* GPU Acceleration untuk semua animasi */
+        .gpu-accelerated {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+            will-change: transform;
+        }
+
+        /* Smooth Scroll Container */
+        .smooth-scroll {
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Optimized Floating Hearts - menggunakan transform3d */
         .heart {
             position: fixed;
-            font-size: 24px;
+            font-size: 20px;
             pointer-events: none;
-            z-index: 1000;
-            animation: floatUp 6s ease-in infinite;
-            text-shadow: 0 0 10px rgba(255, 107, 107, 0.8);
+            z-index: 100;
+            transform: translate3d(0, 0, 0);
+            will-change: transform, opacity;
         }
 
         @keyframes floatUp {
             0% { 
-                transform: translateY(100vh) rotate(0deg) scale(0); 
+                transform: translate3d(0, 100vh, 0) rotate(0deg) scale(0); 
                 opacity: 0;
             }
-            10% { opacity: 1; transform: scale(1); }
-            90% { opacity: 1; }
+            10% { opacity: 0.8; transform: translate3d(0, 90vh, 0) scale(1); }
+            90% { opacity: 0.8; }
             100% { 
-                transform: translateY(-100vh) rotate(720deg) scale(0.5); 
+                transform: translate3d(0, -20vh, 0) rotate(360deg) scale(0.5); 
                 opacity: 0;
             }
         }
 
-        .floating-emoji {
-            position: fixed;
-            font-size: 30px;
-            pointer-events: none;
-            z-index: 999;
-            animation: floatRandom 8s ease-in-out infinite;
+        /* Simple fade in animation - lebih smooth */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        @keyframes floatRandom {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(50px, -50px) rotate(90deg); }
-            50% { transform: translate(-30px, -100px) rotate(180deg); }
-            75% { transform: translate(40px, -30px) rotate(270deg); }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Music Player */
+        /* Photo Frame - optimized */
+        .photo-frame {
+            background: white;
+            padding: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform: translateZ(0);
+        }
+
+        .photo-frame:active {
+            transform: scale(0.98);
+        }
+
+        /* Simple Carousel - swipeable */
+        .carousel-container {
+            overflow: hidden;
+            position: relative;
+            touch-action: pan-y;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            will-change: transform;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 60vh;
+            max-height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Music Player - fixed optimized */
         .music-player {
             position: fixed;
             bottom: 20px;
             right: 20px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             z-index: 9999;
             display: flex;
             align-items: center;
-            gap: 15px;
-            border: 2px solid #ff6b6b;
-            transform: translateX(120%);
-            transition: transform 0.5s ease;
+            gap: 12px;
+            transform: translateX(150%);
+            transition: transform 0.4s ease;
+            max-width: calc(100% - 40px);
         }
 
         .music-player.show {
             transform: translateX(0);
         }
 
-        .vinyl-record {
-            width: 50px;
-            height: 50px;
+        .vinyl-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: linear-gradient(45deg, #333, #111);
-            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             animation: spin 3s linear infinite;
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-        }
-
-        .vinyl-record.playing {
-            animation-play-state: running;
-        }
-
-        .vinyl-record.paused {
             animation-play-state: paused;
+            flex-shrink: 0;
         }
 
-        .vinyl-record::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 15px;
-            height: 15px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            border: 3px solid #fff;
+        .vinyl-icon.playing {
+            animation-play-state: running;
         }
 
         @keyframes spin {
@@ -129,382 +166,34 @@
             to { transform: rotate(360deg); }
         }
 
-        .music-info h4 {
-            font-size: 14px;
-            color: #333;
-            margin: 0;
-        }
-
-        .music-info p {
-            font-size: 12px;
-            color: #ff6b6b;
-            margin: 0;
-        }
-
-        .play-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-            border: none;
-            color: white;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-            transition: all 0.3s;
-        }
-
-        .play-btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0 5px 20px rgba(255, 107, 107, 0.5);
-        }
-
-        /* Enhanced Photo Frames */
-        .photo-frame {
-            position: relative;
-            background: white;
-            padding: 15px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-            overflow: hidden;
-        }
-
-        .photo-frame::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 30px;
-            background: rgba(255, 107, 107, 0.3);
-            border-radius: 5px;
-            backdrop-filter: blur(5px);
-        }
-
-        .photo-frame:hover {
-            transform: rotate(0deg) scale(1.15) translateY(-10px);
-            z-index: 100;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-        }
-
-        .photo-frame img {
-            transition: all 0.3s;
-        }
-
-        .photo-frame:hover img {
-            filter: brightness(1.1);
-        }
-
-        /* 3D Card Flip */
-        .flip-card {
-            perspective: 1000px;
-            height: 300px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-
-        .flip-card-back {
-            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
-            transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: white;
-            text-align: center;
-        }
-
-        /* Particle Text */
-        .particle-text {
-            position: relative;
-            display: inline-block;
-        }
-
-        .particle {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background: gold;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* Love Calculator Advanced */
-        .love-calculator {
+        /* Cards - simple hover effect */
+        .glass-card {
             background: rgba(255, 255, 255, 0.9);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        .love-input {
-            border: 3px solid #ff6b6b;
+        /* Buttons - smooth tap */
+        .btn-primary {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 16px 32px;
             border-radius: 50px;
-            padding: 15px 25px;
+            border: none;
             font-size: 18px;
-            outline: none;
-            transition: all 0.3s;
-            width: 100%;
-            margin-bottom: 15px;
-        }
-
-        .love-input:focus {
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-            transform: scale(1.02);
-        }
-
-        .circular-progress {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(#ff6b6b var(--progress), #e0e0e0 0deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            margin: 20px auto;
-        }
-
-        .circular-progress::before {
-            content: '';
-            position: absolute;
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: white;
-        }
-
-        .progress-value {
-            position: relative;
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff6b6b;
-        }
-
-        /* Slot Machine */
-        .slot-machine {
-            background: linear-gradient(135deg, #ffd700, #ffed4e);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            border: 5px solid #fff;
-        }
-
-        .slot-window {
-            background: white;
-            border-radius: 15px;
-            height: 100px;
-            overflow: hidden;
-            position: relative;
-            border: 3px solid #ff6b6b;
-            margin-bottom: 20px;
-        }
-
-        .slot-content {
-            font-size: 60px;
-            text-align: center;
-            line-height: 100px;
-            animation: slotSpin 0.1s linear infinite;
-        }
-
-        @keyframes slotSpin {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
-        }
-
-        /* Fireworks */
-        .firework {
-            position: fixed;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 2px;
-            animation: explode 1s ease-out forwards;
-            z-index: 9999;
-        }
-
-        @keyframes explode {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(30); opacity: 0; }
-        }
-
-        .firework-particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            border-radius: 50%;
-            animation: particle 1s ease-out forwards;
-        }
-
-        @keyframes particle {
-            0% { transform: translate(0, 0); opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)); opacity: 0; }
-        }
-
-        /* Typewriter Enhanced */
-        .typewriter-container {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .typewriter-text {
-            overflow: hidden;
-            border-right: 3px solid #ff6b6b;
-            white-space: nowrap;
-            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-            font-family: 'Dancing Script', cursive;
-            font-size: 28px;
-            color: #ff6b6b;
-        }
-
-        @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-            from, to { border-color: transparent }
-            50% { border-color: #ff6b6b; }
-        }
-
-        /* Memory Game Enhanced */
-        .memory-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .memory-card-enhanced {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, #ff9a9e, #fecfef);
-            border-radius: 15px;
+            font-weight: 600;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            position: relative;
-            transform-style: preserve-3d;
+            transition: all 0.2s ease;
+            transform: translateZ(0);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .memory-card-enhanced:hover {
-            transform: scale(1.05) rotateY(10deg);
-        }
-
-        .memory-card-enhanced.flipped {
-            background: white;
-            transform: rotateY(180deg);
-        }
-
-        .memory-card-enhanced.matched {
-            animation: matchPulse 0.5s ease;
-            background: linear-gradient(135deg, #4ade80, #22c55e);
-        }
-
-        @keyframes matchPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        /* Rose Petals */
-        .petal {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') no-repeat center;
-            background-size: contain;
-            pointer-events: none;
-            z-index: 998;
-            animation: fallPetal 8s ease-in-out infinite;
-        }
-
-        @keyframes fallPetal {
-            0% { 
-                transform: translateY(-100px) rotate(0deg) translateX(0); 
-                opacity: 1;
-            }
-            100% { 
-                transform: translateY(100vh) rotate(360deg) translateX(100px); 
-                opacity: 0;
-            }
-        }
-
-        /* Interactive Heart Trail */
-        .heart-trail {
-            position: fixed;
-            font-size: 20px;
-            color: #ff6b6b;
-            pointer-events: none;
-            animation: trailFade 1s ease-out forwards;
-            z-index: 999;
-        }
-
-        @keyframes trailFade {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(0) translateY(-50px); opacity: 0; }
-        }
-
-        /* Glassmorphism Enhanced */
-        .glass-card-enhanced {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .glass-card-enhanced::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-            opacity: 0;
-        }
-
-        .glass-card-enhanced:hover::before {
-            animation: shine 0.5s ease-in-out;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        .btn-primary:active {
+            transform: scale(0.96);
+            box-shadow: 0 2px 8px rgba(255, 107, 107, 0.4);
         }
 
         /* Developer Credit */
@@ -514,12 +203,11 @@
             left: 20px;
             background: rgba(0, 0, 0, 0.8);
             color: white;
-            padding: 10px 20px;
+            padding: 10px 16px;
             border-radius: 50px;
-            font-size: 14px;
-            z-index: 9999;
+            font-size: 13px;
+            z-index: 9998;
             backdrop-filter: blur(10px);
-            border: 2px solid #ff6b6b;
         }
 
         .dev-credit span {
@@ -527,76 +215,208 @@
             font-weight: bold;
         }
 
-        /* Breathing Animation */
-        .breathe {
-            animation: breathe 4s ease-in-out infinite;
+        /* Countdown - simple digits */
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 16px;
+            min-width: 70px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+        /* Memory Game - simple grid */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffd93d, #ff6b6b);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientText 3s ease infinite;
+        .memory-card {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+            user-select: none;
         }
 
-        @keyframes gradientText {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .memory-card:active {
+            transform: scale(0.95);
         }
 
-        /* Pulse Ring */
-        .pulse-ring {
+        .memory-card.flipped {
+            background: white;
+            transform: rotateY(180deg);
+        }
+
+        .memory-card img {
+            width: 90%;
+            height: 90%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Scratch Card - canvas based */
+        .scratch-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            height: 180px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+        }
+
+        #scratchCanvas {
             position: absolute;
-            border: 3px solid #ff6b6b;
-            border-radius: 50%;
-            animation: pulseRing 2s ease-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: crosshair;
+            touch-action: none;
         }
 
-        @keyframes pulseRing {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2); opacity: 0; }
+        /* Simple Quiz */
+        .quiz-option {
+            background: white;
+            border: 2px solid #ff6b6b;
+            border-radius: 16px;
+            padding: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 16px;
+        }
+
+        .quiz-option:active {
+            transform: scale(0.98);
+        }
+
+        .quiz-option.correct {
+            background: #4ade80;
+            border-color: #22c55e;
+            color: white;
+        }
+
+        .quiz-option.wrong {
+            background: #f87171;
+            border-color: #ef4444;
+            color: white;
+        }
+
+        /* Love Meter - simple bar */
+        .love-meter {
+            width: 100%;
+            height: 40px;
+            background: #e0e0e0;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .love-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff6b6b, #ff8e8e);
+            border-radius: 20px;
+            transition: width 2s ease-out;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            color: white;
+            font-weight: bold;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .memory-grid { grid-template-columns: repeat(3, 1fr); }
-            .music-player { left: 10px; right: 10px; bottom: 10px; }
-            .dev-credit { bottom: 100px; font-size: 12px; }
+        @media (max-width: 640px) {
+            .music-player {
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                border-radius: 16px;
+            }
+            
+            .dev-credit {
+                bottom: 80px;
+                font-size: 11px;
+                padding: 8px 12px;
+            }
+            
+            .carousel-slide img {
+                height: 50vh;
+            }
+            
+            .countdown-box {
+                min-width: 60px;
+                padding: 12px;
+            }
+            
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
 
-        /* Custom Cursor */
-        body {
-            cursor: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="%23ff6b6b"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>') 16 16, auto;
+        /* Reduce motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
 
-        /* Neon Glow */
-        .neon-glow {
-            text-shadow: 0 0 10px #ff6b6b, 0 0 20px #ff6b6b, 0 0 30px #ff6b6b;
+        /* Confetti - optimized */
+        .confetti {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            pointer-events: none;
+            z-index: 9999;
+            will-change: transform;
         }
 
-        /* Wave Animation */
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.3" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: 1440px 100px;
-            animation: wave 10s linear infinite;
+        /* Letter reveal */
+        .love-letter {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.5s ease;
         }
 
-        @keyframes wave {
-            0% { background-position-x: 0; }
-            100% { background-position-x: 1440px; }
+        .love-letter.show {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
         }
     </style>
 </head>
@@ -604,525 +424,444 @@
 
     <!-- Developer Credit -->
     <div class="dev-credit">
-        💻 Developed with 💕 by <span>Ridzz</span> | 14 Feb 2026
+        💻 Made with 💕 by <span>Ridzz</span>
     </div>
 
-    <!-- Music Player (Maliq & D'Essentials - Pilihanku) -->
+    <!-- Music Player -->
     <div class="music-player" id="musicPlayer">
-        <div class="vinyl-record paused" id="vinyl">
-            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 35px; height: 35px; background: url('https://i.ibb.co.com/HffG9HCR/IMG-20251125-WA0013.jpg') center/cover; border-radius: 50%;"></div>
+        <div class="vinyl-icon" id="vinyl">🎵</div>
+        <div style="flex: 1; min-width: 0;">
+            <div style="font-size: 14px; font-weight: 600; color: #333; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Pilihanku</div>
+            <div style="font-size: 12px; color: #ff6b6b;">Maliq & D'Essentials</div>
         </div>
-        <div class="music-info">
-            <h4>Pilihanku</h4>
-            <p>Maliq & D'Essentials</p>
-        </div>
-        <button class="play-btn" id="playBtn" onclick="toggleMusic()">▶</button>
+        <button onclick="toggleMusic()" style="background: #ff6b6b; color: white; border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 16px; flex-shrink: 0;" id="playBtn">▶</button>
     </div>
 
-    <!-- Audio Element (Simulated - using placeholder for structure) -->
-    <!-- Note: In real implementation, use direct audio file or Spotify embed -->
-    <iframe id="spotifyPlayer" src="https://open.spotify.com/embed/track/3puYuuZ7lmlTjIgXBOT01k?utm_source=generator&theme=0" 
-        width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy" style="position: fixed; bottom: 100px; right: 20px; z-index: 9998; border-radius: 12px; display: none;">
+    <!-- Spotify Embed (Hidden but functional) -->
+    <iframe id="spotifyFrame" src="https://open.spotify.com/embed/track/3puYuuZ7lmlTjIgXBOT01k?utm_source=generator" 
+        width="100%" height="80" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        style="position: fixed; bottom: 100px; right: 20px; z-index: 9997; border-radius: 12px; display: none; opacity: 0; transition: opacity 0.3s;">
     </iframe>
 
-    <!-- Floating Elements Container -->
-    <div id="floating-container"></div>
-
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/10 backdrop-blur-md border-b border-white/20">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="font-pacifico text-2xl text-white neon-glow">Valentine 2026</h1>
-            <div class="flex gap-4">
-                <button onclick="scrollToSection(0)" class="text-white hover:text-pink-200 transition">🏠</button>
-                <button onclick="scrollToSection(1)" class="text-white hover:text-pink-200 transition">📸</button>
-                <button onclick="scrollToSection(2)" class="text-white hover:text-pink-200 transition">🎮</button>
-                <button onclick="scrollToSection(3)" class="text-white hover:text-pink-200 transition">💝</button>
-                <button onclick="scrollToSection(4)" class="text-white hover:text-pink-200 transition">💌</button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Section 1: Hero with Enhanced Effects -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div class="absolute inset-0 bg-gradient-to-br from-pink-400/50 via-red-400/50 to-purple-400/50"></div>
-        <div class="wave"></div>
-        
-        <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
-            <div class="mb-6 breathe inline-block">
-                <span class="text-9xl filter drop-shadow-2xl">💕</span>
-            </div>
+    <!-- Section 1: Hero -->
+    <section class="min-h-screen flex items-center justify-center relative p-4">
+        <div class="text-center max-w-lg mx-auto w-full">
+            <div class="mb-6 text-6xl animate-pulse">💕</div>
             
-            <h1 class="font-pacifico text-6xl md:text-8xl text-white mb-4 drop-shadow-lg gradient-text">
+            <h1 class="font-pacifico text-4xl md:text-5xl text-white mb-2 drop-shadow-lg">
                 Happy Valentine's Day
             </h1>
             
-            <p class="font-dancing text-4xl md:text-5xl text-white mb-6 drop-shadow-md">
-                14 Februari 2026
-            </p>
+            <p class="font-dancing text-3xl text-white mb-8">14 Februari 2026</p>
 
-            <!-- Enhanced Countdown -->
-            <div class="glass-card-enhanced p-8 mb-8 inline-block max-w-2xl">
-                <p class="text-white text-xl mb-6 font-quicksand font-bold tracking-wider">WAKTU MENUJU VALENTINE</p>
-                <div class="flex gap-4 justify-center text-white flex-wrap">
-                    <div class="bg-white/20 rounded-2xl p-4 min-w-[80px]">
-                        <div class="text-5xl font-bold" id="days">00</div>
-                        <div class="text-sm uppercase tracking-widest">Hari</div>
+            <!-- Countdown -->
+            <div class="glass-card p-6 mb-8 inline-block w-full">
+                <p class="text-white text-sm mb-4 font-semibold uppercase tracking-wider">Menuju Valentine</p>
+                <div class="flex justify-center gap-2 md:gap-4 text-white">
+                    <div class="countdown-box">
+                        <div class="text-3xl font-bold" id="days">00</div>
+                        <div class="text-xs">Hari</div>
                     </div>
-                    <div class="bg-white/20 rounded-2xl p-4 min-w-[80px]">
-                        <div class="text-5xl font-bold" id="hours">00</div>
-                        <div class="text-sm uppercase tracking-widest">Jam</div>
+                    <div class="countdown-box">
+                        <div class="text-3xl font-bold" id="hours">00</div>
+                        <div class="text-xs">Jam</div>
                     </div>
-                    <div class="bg-white/20 rounded-2xl p-4 min-w-[80px]">
-                        <div class="text-5xl font-bold" id="minutes">00</div>
-                        <div class="text-sm uppercase tracking-widest">Menit</div>
+                    <div class="countdown-box">
+                        <div class="text-3xl font-bold" id="minutes">00</div>
+                        <div class="text-xs">Menit</div>
                     </div>
-                    <div class="bg-white/20 rounded-2xl p-4 min-w-[80px]">
-                        <div class="text-5xl font-bold" id="seconds">00</div>
-                        <div class="text-sm uppercase tracking-widest">Detik</div>
+                    <div class="countdown-box">
+                        <div class="text-3xl font-bold" id="seconds">00</div>
+                        <div class="text-xs">Detik</div>
                     </div>
                 </div>
             </div>
 
-            <br>
-            <button class="cute-btn text-xl px-10 py-4 rounded-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 transform hover:scale-110 transition-all shadow-2xl" onclick="startJourney()">
-                Mulai Petualangan Cinta 💝
+            <button class="btn-primary w-full md:w-auto" onclick="scrollToSection('gallery')">
+                Lihat Kenangan Kita 💝
             </button>
         </div>
     </section>
 
-    <!-- Section 2: Interactive 3D Gallery -->
-    <section class="min-h-screen flex flex-col items-center justify-center p-8 relative">
-        <div class="absolute inset-0 bg-gradient-to-br from-rose-200/80 via-pink-200/80 to-red-200/80"></div>
-        
-        <div class="relative z-10 w-full max-w-6xl">
-            <h2 class="font-pacifico text-5xl md:text-6xl text-center text-rose-600 mb-4 drop-shadow-md">
-                Galeri Kenangan Kita
-            </h2>
-            <p class="text-center text-rose-500 mb-12 text-xl font-quicksand">Klik foto untuk melihat kejutan!</p>
+    <!-- Section 2: Photo Gallery (Swipeable) -->
+    <section id="gallery" class="min-h-screen flex flex-col items-center justify-center p-4 relative bg-gradient-to-b from-pink-200 to-rose-200">
+        <div class="text-center mb-8 w-full">
+            <h2 class="font-pacifico text-4xl text-rose-600 mb-2">Galeri Kita</h2>
+            <p class="text-rose-500 text-sm">Swipe untuk melihat foto</p>
+        </div>
 
-            <!-- 3D Carousel -->
-            <div class="relative h-[500px] flex items-center justify-center mb-12" style="perspective: 1000px;">
-                <div id="carousel" class="relative w-[300px] h-[400px]" style="transform-style: preserve-3d; transition: transform 1s;">
-                    <!-- Photo 1 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(0deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/HffG9HCR/IMG-20251125-WA0013.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 1">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Moment Pertama 💕</p>
-                    </div>
-                    <!-- Photo 2 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(51deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/m5T0hN2w/IMG-20251005-WA0035.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 2">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Senyum Manismu 😊</p>
-                    </div>
-                    <!-- Photo 3 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(102deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/LhpPQV79/IMG-20251203-WA0021.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 3">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Bersamamu 🌸</p>
-                    </div>
-                    <!-- Photo 4 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(153deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/5XvyNPcq/IMG-20260126-WA0036.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 4">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Cinta Kita 💖</p>
-                    </div>
-                    <!-- Photo 5 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(204deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/twfcs2CK/IMG-20260126-WA0031.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 5">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Bahagia 🌺</p>
-                    </div>
-                    <!-- Photo 6 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(255deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/Zzf3zh4p/IMG-20260214-WA0025.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 6">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Valentine Kita 💝</p>
-                    </div>
-                    <!-- Photo 7 -->
-                    <div class="absolute w-[300px] h-[400px] bg-white p-4 rounded-xl shadow-2xl cursor-pointer" style="transform: rotateY(306deg) translateZ(400px);" onclick="showFireworks()">
-                        <img src="https://i.ibb.co.com/v4qCfGnj/IMG-20260216-WA0034.jpg" class="w-full h-[320px] object-cover rounded-lg" alt="Moment 7">
-                        <p class="text-center mt-3 font-dancing text-xl text-rose-600">Selamanya 💗</p>
-                    </div>
+        <div class="carousel-container w-full max-w-md mx-auto">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Foto 1 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/HffG9HCR/IMG-20251125-WA0013.jpg" alt="Foto 1" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Moment Pertama 💕</p>
+                </div>
+                <!-- Foto 2 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/m5T0hN2w/IMG-20251005-WA0035.jpg" alt="Foto 2" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Senyum Manismu 😊</p>
+                </div>
+                <!-- Foto 3 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/LhpPQV79/IMG-20251203-WA0021.jpg" alt="Foto 3" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Bersamamu 🌸</p>
+                </div>
+                <!-- Foto 4 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/5XvyNPcq/IMG-20260126-WA0036.jpg" alt="Foto 4" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Cinta Kita 💖</p>
+                </div>
+                <!-- Foto 5 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/twfcs2CK/IMG-20260126-WA0031.jpg" alt="Foto 5" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Bahagia 🌺</p>
+                </div>
+                <!-- Foto 6 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/Zzf3zh4p/IMG-20260214-WA0025.jpg" alt="Foto 6" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Valentine Kita 💝</p>
+                </div>
+                <!-- Foto 7 -->
+                <div class="carousel-slide">
+                    <img src="https://i.ibb.co.com/v4qCfGnj/IMG-20260216-WA0034.jpg" alt="Foto 7" loading="lazy">
+                    <p class="text-center mt-4 font-dancing text-2xl text-rose-600">Selamanya 💗</p>
                 </div>
             </div>
-
-            <div class="flex justify-center gap-4">
-                <button onclick="rotateCarousel(-1)" class="bg-white/80 hover:bg-white p-4 rounded-full shadow-lg transition text-2xl">⬅️</button>
-                <button onclick="rotateCarousel(1)" class="bg-white/80 hover:bg-white p-4 rounded-full shadow-lg transition text-2xl">➡️</button>
-            </div>
+            
+            <!-- Indicators -->
+            <div class="flex justify-center gap-2 mt-6" id="carouselIndicators"></div>
         </div>
+
+        <button class="btn-primary mt-8" onclick="scrollToSection('games')">
+            Main Games 🎮
+        </button>
     </section>
 
-    <!-- Section 3: Games & Interactive Features -->
-    <section class="min-h-screen flex items-center justify-center p-8 relative">
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-200/80 via-pink-200/80 to-rose-200/80"></div>
-        
-        <div class="relative z-10 w-full max-w-6xl grid md:grid-cols-2 gap-8">
+    <!-- Section 3: Interactive Games -->
+    <section id="games" class="min-h-screen flex flex-col items-center justify-center p-4 relative bg-gradient-to-b from-rose-200 to-pink-200">
+        <h2 class="font-pacifico text-4xl text-rose-600 mb-8 text-center">Games Cinta</h2>
+
+        <div class="w-full max-w-md space-y-8">
             
-            <!-- Love Calculator Advanced -->
-            <div class="love-calculator">
-                <h3 class="font-pacifico text-3xl text-rose-600 mb-6 text-center">Kalkulator Cinta 💘</h3>
-                <input type="text" class="love-input" placeholder="Nama Kamu" id="name1">
-                <input type="text" class="love-input" placeholder="Nama Pasangan" id="name2">
-                <button class="w-full bg-gradient-to-r from-rose-400 to-pink-500 text-white py-4 rounded-full font-bold text-xl hover:shadow-xl transition transform hover:scale-105" onclick="calculateLove()">
-                    Hitung Kecocokan!
-                </button>
-                
-                <div id="loveResult" style="display: none;" class="mt-6">
-                    <div class="circular-progress" id="progressCircle" style="--progress: 0deg;">
-                        <div class="progress-value" id="percentage">0%</div>
-                    </div>
-                    <p class="text-center text-rose-600 font-bold text-xl mt-4" id="loveMessage"></p>
+            <!-- Love Meter -->
+            <div class="glass-card p-6 fade-in">
+                <h3 class="font-bold text-rose-600 text-xl mb-4 text-center">Seberapa Cinta? 💘</h3>
+                <button class="btn-primary w-full mb-4" onclick="fillLoveMeter()">Ukur Cintaku!</button>
+                <div class="love-meter">
+                    <div class="love-fill" id="loveFill">0%</div>
                 </div>
+                <p class="text-center mt-4 text-rose-600 font-semibold" id="loveText"></p>
             </div>
 
-            <!-- Slot Machine -->
-            <div class="slot-machine">
-                <h3 class="font-pacifico text-3xl text-rose-800 mb-4 text-center">Slot Cinta 🎰</h3>
-                <div class="slot-window">
-                    <div class="slot-content" id="slotContent">💕</div>
+            <!-- Scratch Card -->
+            <div class="glass-card p-6 fade-in">
+                <h3 class="font-bold text-rose-600 text-xl mb-4 text-center">Gosok untuk Lihat! 🎁</h3>
+                <div class="scratch-container">
+                    <div>Aku Sayang Kamu<br>Lebih dari Apapun! 💖</div>
+                    <canvas id="scratchCanvas"></canvas>
                 </div>
-                <button class="w-full bg-rose-600 text-white py-3 rounded-full font-bold text-lg hover:bg-rose-700 transition" onclick="spinSlot()">
-                    Putar! 🎲
-                </button>
-                <p class="text-center mt-4 text-rose-800 font-bold" id="slotResult"></p>
+                <p class="text-center mt-4 text-sm text-gray-600">Gosok area abu-abu</p>
             </div>
 
             <!-- Memory Game -->
-            <div class="glass-card-enhanced p-6 md:col-span-2">
-                <h3 class="font-pacifico text-3xl text-white mb-6 text-center">Permainan Memori Foto 🧩</h3>
-                <p class="text-white text-center mb-4">Cocokkan pasangan foto!</p>
-                <div class="memory-grid" id="memoryGrid">
-                    <!-- Generated by JS -->
-                </div>
-                <p class="text-white text-center mt-4">Percobaan: <span id="moves">0</span> | Pasangan: <span id="pairs">0</span>/8</p>
-                <button class="mt-4 bg-white text-rose-600 px-6 py-2 rounded-full font-bold hover:bg-rose-100 transition" onclick="resetMemory()">Main Lagi</button>
+            <div class="glass-card p-6 fade-in">
+                <h3 class="font-bold text-rose-600 text-xl mb-4 text-center">Memory Foto 🧩</h3>
+                <div class="memory-grid" id="memoryGrid"></div>
+                <p class="text-center mt-4 text-sm">Pasangan: <span id="pairsFound">0</span>/8</p>
+                <button class="btn-primary w-full mt-4" onclick="resetMemory()">Main Lagi</button>
             </div>
+
         </div>
+
+        <button class="btn-primary mt-8" onclick="scrollToSection('quiz')">
+            Lanjut ke Quiz ❓
+        </button>
     </section>
 
-    <!-- Section 4: Interactive Messages -->
-    <section class="min-h-screen flex items-center justify-center p-8 relative">
-        <div class="absolute inset-0 bg-gradient-to-br from-red-200/80 via-rose-200/80 to-pink-200/80"></div>
-        
-        <div class="relative z-10 w-full max-w-4xl space-y-8">
-            
-            <!-- Typewriter Message -->
-            <div class="typewriter-container">
-                <h3 class="font-pacifico text-2xl text-rose-600 mb-4">Pesan Rahasia ✨</h3>
-                <div class="typewriter-text" id="typewriter"></div>
-                <button class="mt-4 bg-rose-500 text-white px-6 py-2 rounded-full hover:bg-rose-600 transition" onclick="startTypewriter()">
-                    Lihat Pesan Lain
-                </button>
+    <!-- Section 4: Quiz -->
+    <section id="quiz" class="min-h-screen flex flex-col items-center justify-center p-4 relative bg-gradient-to-b from-pink-200 to-purple-200">
+        <h2 class="font-pacifico text-4xl text-rose-600 mb-8 text-center">Quiz Cinta</h2>
+
+        <div class="glass-card p-6 w-full max-w-md fade-in" id="quizContainer">
+            <div id="question1">
+                <p class="font-bold text-lg mb-4 text-rose-600">1. Apa warna favoritku?</p>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">Biru</div>
+                <div class="quiz-option" onclick="answerQuiz(this, true)">Pink/Merah</div>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">Hijau</div>
             </div>
 
-            <!-- Flip Cards with Photos -->
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="flip-card h-[250px]">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://i.ibb.co.com/HffG9HCR/IMG-20251125-WA0013.jpg" class="w-full h-full object-cover" alt="Front">
-                        </div>
-                        <div class="flip-card-back">
-                            <p class="font-dancing text-2xl">Kamu adalah bintang paling terang di hidupku ⭐</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flip-card h-[250px]">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://i.ibb.co.com/m5T0hN2w/IMG-20251005-WA0035.jpg" class="w-full h-full object-cover" alt="Front">
-                        </div>
-                        <div class="flip-card-back">
-                            <p class="font-dancing text-2xl">Senyummu adalah obat terbaik untuk segala masalah 💊</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flip-card h-[250px]">
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <img src="https://i.ibb.co.com/LhpPQV79/IMG-20251203-WA0021.jpg" class="w-full h-full object-cover" alt="Front">
-                        </div>
-                        <div class="flip-card-back">
-                            <p class="font-dancing text-2xl">Bersamamu adalah tempatku pulang 🏠</p>
-                        </div>
-                    </div>
-                </div>
+            <div id="question2" style="display: none;">
+                <p class="font-bold text-lg mb-4 text-rose-600">2. Apa yang paling kusukai dari kamu?</p>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">Rambutmu</div>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">Senyummu</div>
+                <div class="quiz-option" onclick="answerQuiz(this, true)">Semuanya!</div>
             </div>
 
-            <!-- Interactive Poem -->
-            <div class="glass-card-enhanced p-8 text-center">
-                <h3 class="font-pacifico text-3xl text-white mb-6">Puisi Interaktif 📝</h3>
-                <div class="space-y-4" id="poemLines">
-                    <p class="text-white text-xl cursor-pointer hover:text-yellow-300 transition transform hover:scale-105" onclick="revealLine(this)">
-                        [Klik untuk membuka baris 1]
-                    </p>
-                    <p class="text-white text-xl cursor-pointer hover:text-yellow-300 transition transform hover:scale-105" onclick="revealLine(this)">
-                        [Klik untuk membuka baris 2]
-                    </p>
-                    <p class="text-white text-xl cursor-pointer hover:text-yellow-300 transition transform hover:scale-105" onclick="revealLine(this)">
-                        [Klik untuk membuka baris 3]
-                    </p>
-                    <p class="text-white text-xl cursor-pointer hover:text-yellow-300 transition transform hover:scale-105" onclick="revealLine(this)">
-                        [Klik untuk membuka baris 4]
-                    </p>
-                </div>
+            <div id="question3" style="display: none;">
+                <p class="font-bold text-lg mb-4 text-rose-600">3. Skala cintaku padamu?</p>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">1-100</div>
+                <div class="quiz-option" onclick="answerQuiz(this, false)">1000</div>
+                <div class="quiz-option" onclick="answerQuiz(this, true)">Tak Terhingga ♾️</div>
+            </div>
+
+            <div id="quizComplete" style="display: none;" class="text-center py-8">
+                <div class="text-6xl mb-4">🎉</div>
+                <h3 class="font-pacifico text-3xl text-rose-600 mb-4">Kamu Hebat!</h3>
+                <p class="text-gray-600 mb-6">Kamu tahu betapa besarnya cintaku padamu 💕</p>
+                <button class="btn-primary" onclick="resetQuiz()">Main Lagi</button>
             </div>
         </div>
+
+        <button class="btn-primary mt-8" onclick="scrollToSection('letter')">
+            Buka Surat 💌
+        </button>
     </section>
 
-    <!-- Section 5: Final Love Letter & Celebration -->
-    <section class="min-h-screen flex flex-col items-center justify-center p-8 relative">
-        <div class="absolute inset-0 bg-gradient-to-br from-rose-300/80 via-pink-300/80 to-purple-300/80"></div>
-        
-        <div class="relative z-10 w-full max-w-4xl text-center">
-            <h2 class="font-pacifico text-5xl md:text-6xl text-white mb-8 drop-shadow-lg">
-                Surat Cinta Untukmu 💌
-            </h2>
+    <!-- Section 5: Love Letter -->
+    <section id="letter" class="min-h-screen flex flex-col items-center justify-center p-4 relative bg-gradient-to-b from-purple-200 to-pink-300">
+        <h2 class="font-pacifico text-4xl text-white mb-8 text-center drop-shadow-lg">Surat Cinta Untukmu</h2>
 
-            <!-- Animated Envelope -->
-            <div class="flex justify-center mb-12">
-                <div class="relative w-[350px] h-[250px] cursor-pointer" id="finalEnvelope" onclick="openFinalEnvelope()">
-                    <div class="absolute inset-0 bg-gradient-to-br from-rose-400 to-red-500 rounded-2xl shadow-2xl transform transition-transform duration-500" style="transform-origin: bottom;">
-                        <div class="absolute top-0 left-0 right-0 h-[125px] bg-gradient-to-b from-red-300 to-rose-400 rounded-t-2xl" style="clip-path: polygon(0 0, 50% 100%, 100% 0);"></div>
-                        <div class="absolute bottom-4 left-4 right-4 top-[130px] bg-white rounded-lg p-6 transform transition-transform duration-700" id="finalLetter" style="transform: translateY(0);">
-                            <p class="font-dancing text-2xl text-rose-600 leading-relaxed">
-                                Sayangku,<br><br>
-                                Di hari Valentine ini, aku ingin kamu tahu bahwa kamu adalah pilihanku, sekarang dan selamanya. Terima kasih sudah menjadi alasan aku tersenyum setiap hari.<br><br>
-                                I Love You Forever! 💕<br>
-                                - Aku yang Sayang Kamu
-                            </p>
-                        </div>
-                    </div>
-                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-xl pointer-events-none" id="envelopeText">
-                        Klik untuk Buka 💝
-                    </div>
-                </div>
+        <div class="love-letter" id="loveLetter">
+            <div class="text-center mb-6">
+                <span class="text-5xl">💌</span>
             </div>
-
-            <!-- Photo Collage with Effects -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div class="photo-frame transform -rotate-6 hover:rotate-0 transition-all duration-300" onmouseenter="createHeartBurst(this)">
-                    <img src="https://i.ibb.co.com/5XvyNPcq/IMG-20260126-WA0036.jpg" class="w-full h-48 object-cover" alt="Collage 1">
-                </div>
-                <div class="photo-frame transform rotate-3 hover:rotate-0 transition-all duration-300" onmouseenter="createHeartBurst(this)">
-                    <img src="https://i.ibb.co.com/twfcs2CK/IMG-20260126-WA0031.jpg" class="w-full h-48 object-cover" alt="Collage 2">
-                </div>
-                <div class="photo-frame transform -rotate-3 hover:rotate-0 transition-all duration-300" onmouseenter="createHeartBurst(this)">
-                    <img src="https://i.ibb.co.com/Zzf3zh4p/IMG-20260214-WA0025.jpg" class="w-full h-48 object-cover" alt="Collage 3">
-                </div>
-                <div class="photo-frame transform rotate-6 hover:rotate-0 transition-all duration-300" onmouseenter="createHeartBurst(this)">
-                    <img src="https://i.ibb.co.com/v4qCfGnj/IMG-20260216-WA0034.jpg" class="w-full h-48 object-cover" alt="Collage 4">
-                </div>
+            <p class="font-dancing text-2xl text-rose-600 leading-relaxed text-center mb-6">
+                Sayangku,<br><br>
+                Di hari Valentine ini, aku ingin kamu tahu bahwa kamu adalah pilihanku. Setiap hari bersamamu adalah anugerah. Terima kasih sudah menjadi bagian terindah dalam hidupku.<br><br>
+                I Love You Forever! 💕<br>
+                <span class="text-lg">- Dari Aku yang Sayang Kamu -</span>
+            </p>
+            <div class="text-center">
+                <button class="btn-primary" onclick="showLetter()">Buka Surat</button>
             </div>
-
-            <button class="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 text-white text-2xl px-12 py-6 rounded-full font-bold shadow-2xl hover:shadow-3xl transform hover:scale-110 transition-all duration-300 animate-pulse" onclick="grandFinale()">
-                🎉 Tekan untuk Kejutan Besar! 🎉
-            </button>
         </div>
+
+        <!-- Photo Collage -->
+        <div class="grid grid-cols-2 gap-4 mt-8 w-full max-w-md">
+            <div class="photo-frame rounded-lg">
+                <img src="https://i.ibb.co.com/5XvyNPcq/IMG-20260126-WA0036.jpg" class="w-full h-32 object-cover rounded" alt="Collage 1" loading="lazy">
+            </div>
+            <div class="photo-frame rounded-lg">
+                <img src="https://i.ibb.co.com/twfcs2CK/IMG-20260126-WA0031.jpg" class="w-full h-32 object-cover rounded" alt="Collage 2" loading="lazy">
+            </div>
+            <div class="photo-frame rounded-lg">
+                <img src="https://i.ibb.co.com/Zzf3zh4p/IMG-20260214-WA0025.jpg" class="w-full h-32 object-cover rounded" alt="Collage 3" loading="lazy">
+            </div>
+            <div class="photo-frame rounded-lg">
+                <img src="https://i.ibb.co.com/v4qCfGnj/IMG-20260216-WA0034.jpg" class="w-full h-32 object-cover rounded" alt="Collage 4" loading="lazy">
+            </div>
+        </div>
+
+        <button class="btn-primary mt-8 text-xl" onclick="grandFinale()">
+            Kejutan Akhir! 🎉
+        </button>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-rose-600 text-white text-center p-8 relative z-10">
-        <p class="font-pacifico text-3xl mb-2">Dibuat dengan 💕 oleh Ridzz</p>
-        <p class="font-quicksand">Happy Valentine's Day 2026 | Untuk Cewekku Tersayang</p>
-        <p class="text-sm mt-4 opacity-80">Lagunya: Maliq & D'Essentials - Pilihanku 🎵</p>
+    <footer class="bg-rose-600 text-white text-center p-8">
+        <p class="font-pacifico text-2xl mb-2">Dibuat dengan 💕 oleh Ridzz</p>
+        <p class="text-sm opacity-90">Happy Valentine's Day 2026</p>
+        <p class="text-xs mt-2 opacity-75">🎵 Maliq & D'Essentials - Pilihanku</p>
     </footer>
 
     <script>
-        // Global Variables
-        let carouselRotation = 0;
-        let currentAudio = null;
+        // Global variables
+        let currentSlide = 0;
         let isPlaying = false;
+        let quizScore = 0;
+        let currentQuestion = 1;
         let memoryCards = [];
         let flippedCards = [];
         let matchedPairs = 0;
-        let moves = 0;
 
         // Initialize
-        window.onload = function() {
-            createFloatingElements();
-            initMemoryGame();
-            startTypewriter();
+        window.addEventListener('load', () => {
+            initCountdown();
+            initCarousel();
+            initScratch();
+            initMemory();
+            createFloatingHearts();
+            
+            // Show music player after delay
             setTimeout(() => {
                 document.getElementById('musicPlayer').classList.add('show');
-            }, 2000);
-        };
+            }, 1000);
 
-        // Create Floating Hearts and Emojis
-        function createFloatingElements() {
-            const container = document.getElementById('floating-container');
-            const emojis = ['💕', '💖', '💗', '💝', '💘', '💓', '🌹', '✨', '🦋', '🌸'];
-            
-            setInterval(() => {
-                const el = document.createElement('div');
-                el.className = Math.random() > 0.5 ? 'heart' : 'floating-emoji';
-                el.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                el.style.left = Math.random() * 100 + 'vw';
-                el.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                el.style.fontSize = (Math.random() * 30 + 20) + 'px';
-                container.appendChild(el);
-                
-                setTimeout(() => el.remove(), 10000);
-            }, 500);
+            // Intersection Observer for fade-in animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        });
+
+        // Smooth scroll function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
-        // Music Player Control
+        // Music Player
         function toggleMusic() {
             const vinyl = document.getElementById('vinyl');
             const btn = document.getElementById('playBtn');
-            const spotify = document.getElementById('spotifyPlayer');
+            const spotify = document.getElementById('spotifyFrame');
             
             if (!isPlaying) {
-                // Show Spotify player and start playing
                 spotify.style.display = 'block';
-                vinyl.classList.remove('paused');
+                setTimeout(() => spotify.style.opacity = '1', 100);
                 vinyl.classList.add('playing');
                 btn.innerHTML = '⏸';
                 isPlaying = true;
-                
-                // Auto-hide Spotify after 3 seconds (keep playing)
-                setTimeout(() => {
-                    spotify.style.opacity = '0.7';
-                }, 3000);
             } else {
-                spotify.style.display = 'none';
+                spotify.style.opacity = '0';
+                setTimeout(() => spotify.style.display = 'none', 300);
                 vinyl.classList.remove('playing');
-                vinyl.classList.add('paused');
                 btn.innerHTML = '▶';
                 isPlaying = false;
             }
         }
 
-        // Countdown Timer
-        function updateCountdown() {
-            const valentineDate = new Date('February 14, 2026 00:00:00').getTime();
-            const now = new Date().getTime();
-            const distance = valentineDate - now;
+        // Countdown
+        function initCountdown() {
+            function update() {
+                const valentine = new Date('February 14, 2026 00:00:00').getTime();
+                const now = new Date().getTime();
+                const diff = valentine - now;
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                document.getElementById('days').textContent = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').textContent = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            }
+            update();
+            setInterval(update, 1000);
         }
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Carousel Control
-        function rotateCarousel(direction) {
-            carouselRotation += direction * 51;
-            document.getElementById('carousel').style.transform = `rotateY(${carouselRotation}deg)`;
-        }
-
-        // Auto-rotate carousel
-        setInterval(() => {
-            rotateCarousel(1);
-        }, 5000);
-
-        // Fireworks Effect
-        function showFireworks() {
-            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff', '#ff8e8e'];
+        // Carousel with touch support
+        function initCarousel() {
+            const track = document.getElementById('carouselTrack');
+            const slides = track.children;
+            const indicatorsContainer = document.getElementById('carouselIndicators');
             
-            for (let i = 0; i < 5; i++) {
-                setTimeout(() => {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight;
-                    createFirework(x, y, colors[Math.floor(Math.random() * colors.length)]);
-                }, i * 200);
+            // Create indicators
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'w-2 h-2 rounded-full bg-rose-300 transition-all';
+                dot.style.cursor = 'pointer';
+                dot.onclick = () => goToSlide(i);
+                indicatorsContainer.appendChild(dot);
+            }
+            
+            updateIndicators();
+            
+            // Touch events
+            let startX = 0;
+            let currentX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+                track.style.transition = 'none';
+            }, { passive: true });
+            
+            track.addEventListener('touchmove', (e) => {
+                currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                const offset = -currentSlide * 100 + (diff / window.innerWidth * 100);
+                track.style.transform = `translateX(${offset}%)`;
+            }, { passive: true });
+            
+            track.addEventListener('touchend', (e) => {
+                track.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                const diff = currentX - startX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0 && currentSlide > 0) currentSlide--;
+                    else if (diff < 0 && currentSlide < slides.length - 1) currentSlide++;
+                }
+                goToSlide(currentSlide);
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            const track = document.getElementById('carouselTrack');
+            track.style.transform = `translateX(-${index * 100}%)`;
+            updateIndicators();
+        }
+
+        function updateIndicators() {
+            const dots = document.getElementById('carouselIndicators').children;
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = i === currentSlide ? 'w-3 h-3 rounded-full bg-rose-600 transition-all' : 'w-2 h-2 rounded-full bg-rose-300 transition-all';
             }
         }
 
-        function createFirework(x, y, color) {
-            const firework = document.createElement('div');
-            firework.className = 'firework';
-            firework.style.left = x + 'px';
-            firework.style.top = y + 'px';
-            firework.style.boxShadow = `0 0 10px 2px ${color}`;
-            firework.style.color = color;
-            document.body.appendChild(firework);
+        // Love Meter
+        function fillLoveMeter() {
+            const fill = document.getElementById('loveFill');
+            const text = document.getElementById('loveText');
+            
+            fill.style.width = '100%';
+            fill.textContent = '100%';
+            text.textContent = 'Cintaku 1000% untukmu! 💖';
+            
+            createConfetti();
+        }
 
-            // Create particles
-            for (let i = 0; i < 12; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'firework-particle';
-                particle.style.backgroundColor = color;
-                particle.style.left = x + 'px';
-                particle.style.top = y + 'px';
+        // Scratch Card
+        function initScratch() {
+            const canvas = document.getElementById('scratchCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            const rect = canvas.parentElement.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+            
+            // Fill with gray
+            ctx.fillStyle = '#888';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Add text
+            ctx.fillStyle = '#aaa';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('GOSOK DISINI', canvas.width/2, canvas.height/2);
+            
+            // Scratch function
+            let isDrawing = false;
+            
+            function scratch(e) {
+                if (!isDrawing) return;
+                e.preventDefault();
                 
-                const angle = (i / 12) * Math.PI * 2;
-                const velocity = 100;
-                particle.style.setProperty('--tx', Math.cos(angle) * velocity + 'px');
-                particle.style.setProperty('--ty', Math.sin(angle) * velocity + 'px');
+                const rect = canvas.getBoundingClientRect();
+                const x = (e.clientX || e.touches[0].clientX) - rect.left;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top;
                 
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 1000);
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(x, y, 30, 0, Math.PI * 2);
+                ctx.fill();
             }
-
-            setTimeout(() => firework.remove(), 1000);
-        }
-
-        // Love Calculator
-        function calculateLove() {
-            const name1 = document.getElementById('name1').value || 'Kamu';
-            const name2 = document.getElementById('name2').value || 'Aku';
             
-            // Calculate based on names (just for fun)
-            let percentage = 0;
-            const targetPercentage = 98 + Math.floor(Math.random() * 3); // 98-100%
-            
-            const resultDiv = document.getElementById('loveResult');
-            const circle = document.getElementById('progressCircle');
-            const text = document.getElementById('percentage');
-            const message = document.getElementById('loveMessage');
-            
-            resultDiv.style.display = 'block';
-            
-            const interval = setInterval(() => {
-                percentage++;
-                circle.style.setProperty('--progress', (percentage * 3.6) + 'deg');
-                text.textContent = percentage + '%';
-                
-                if (percentage >= targetPercentage) {
-                    clearInterval(interval);
-                    message.textContent = `Cinta ${name1} & ${name2} adalah Cinta Sejati! 💕`;
-                    createConfetti();
-                }
-            }, 20);
-        }
-
-        // Slot Machine
-        const slotEmojis = ['💕', '💖', '💗', '💝', '💘', '🌹', '✨', '🦋'];
-        function spinSlot() {
-            const slot = document.getElementById('slotContent');
-            const result = document.getElementById('slotResult');
-            let spins = 0;
-            const maxSpins = 20;
-            
-            const interval = setInterval(() => {
-                slot.textContent = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-                spins++;
-                
-                if (spins >= maxSpins) {
-                    clearInterval(interval);
-                    const final = slotEmojis[Math.floor(Math.random() * slotEmojis.length)];
-                    slot.textContent = final;
-                    
-                    if (final === '💕' || final === '💖' || final === '💗') {
-                        result.textContent = 'Jackpot Cinta! Kamu Menang Hati! 💘';
-                        showFireworks();
-                    } else {
-                        result.textContent = 'Coba lagi! Keberuntungan cinta menantimu!';
-                    }
-                }
-            }, 100);
+            canvas.addEventListener('mousedown', () => isDrawing = true);
+            canvas.addEventListener('mousemove', scratch);
+            canvas.addEventListener('mouseup', () => isDrawing = false);
+            canvas.addEventListener('touchstart', () => isDrawing = true, { passive: false });
+            canvas.addEventListener('touchmove', scratch, { passive: false });
+            canvas.addEventListener('touchend', () => isDrawing = false);
         }
 
         // Memory Game
-        function initMemoryGame() {
+        function initMemory() {
             const grid = document.getElementById('memoryGrid');
             const photos = [
                 'https://i.ibb.co.com/HffG9HCR/IMG-20251125-WA0013.jpg',
@@ -1135,25 +874,23 @@
                 '💕'
             ];
             
-            // Create pairs
             let cards = [...photos, ...photos];
             cards.sort(() => Math.random() - 0.5);
             
             grid.innerHTML = '';
             cards.forEach((item, index) => {
                 const card = document.createElement('div');
-                card.className = 'memory-card-enhanced';
-                card.dataset.index = index;
+                card.className = 'memory-card';
                 card.dataset.value = item;
-                card.innerHTML = '❓';
+                card.dataset.index = index;
+                card.innerHTML = '❤️';
                 card.onclick = () => flipCard(card);
                 grid.appendChild(card);
             });
             
             matchedPairs = 0;
-            moves = 0;
             flippedCards = [];
-            updateMemoryStats();
+            document.getElementById('pairsFound').textContent = '0';
         }
 
         function flipCard(card) {
@@ -1163,249 +900,154 @@
             if (card.dataset.value === '💕') {
                 card.innerHTML = '💕';
             } else {
-                card.innerHTML = `<img src="${card.dataset.value}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">`;
+                card.innerHTML = `<img src="${card.dataset.value}" style="width:90%;height:90%;object-fit:cover;border-radius:8px;">`;
             }
             
             flippedCards.push(card);
-            moves++;
-            updateMemoryStats();
             
             if (flippedCards.length === 2) {
-                checkMatch();
+                setTimeout(checkMatch, 600);
             }
         }
 
         function checkMatch() {
-            const [card1, card2] = flippedCards;
+            const [c1, c2] = flippedCards;
             
-            if (card1.dataset.value === card2.dataset.value) {
-                setTimeout(() => {
-                    card1.classList.add('matched');
-                    card2.classList.add('matched');
-                    matchedPairs++;
-                    flippedCards = [];
-                    updateMemoryStats();
-                    
-                    if (matchedPairs === 8) {
-                        setTimeout(() => {
-                            alert('Selamat! Kamu menemukan semua pasangan cinta! 💕');
-                            showFireworks();
-                        }, 500);
-                    }
-                }, 500);
+            if (c1.dataset.value === c2.dataset.value) {
+                c1.classList.add('matched');
+                c2.classList.add('matched');
+                matchedPairs++;
+                document.getElementById('pairsFound').textContent = matchedPairs;
+                
+                if (matchedPairs === 8) {
+                    setTimeout(() => {
+                        alert('Selamat! Kamu menemukan semua pasangan! 💕');
+                        createConfetti();
+                    }, 300);
+                }
             } else {
-                setTimeout(() => {
-                    card1.classList.remove('flipped');
-                    card2.classList.remove('flipped');
-                    card1.innerHTML = '❓';
-                    card2.innerHTML = '❓';
-                    flippedCards = [];
-                }, 1000);
+                c1.classList.remove('flipped');
+                c2.classList.remove('flipped');
+                c1.innerHTML = '❤️';
+                c2.innerHTML = '❤️';
             }
-        }
-
-        function updateMemoryStats() {
-            document.getElementById('moves').textContent = moves;
-            document.getElementById('pairs').textContent = matchedPairs;
+            
+            flippedCards = [];
         }
 
         function resetMemory() {
-            initMemoryGame();
+            initMemory();
         }
 
-        // Typewriter Effect
-        const messages = [
-            "Kamu adalah alasan aku percaya pada cinta sejati...",
-            "Setiap detik bersamamu adalah anugerah terindah...",
-            "Aku mencintaimu lebih dari kata-kata bisa ungkapkan...",
-            "Bersamamu adalah rumah, di mana pun itu berada..."
-        ];
-        let messageIndex = 0;
-
-        function startTypewriter() {
-            const el = document.getElementById('typewriter');
-            const text = messages[messageIndex];
-            el.textContent = '';
-            el.style.width = '0';
+        // Quiz
+        function answerQuiz(element, isCorrect) {
+            const options = element.parentElement.querySelectorAll('.quiz-option');
+            options.forEach(opt => opt.style.pointerEvents = 'none');
+            
+            if (isCorrect) {
+                element.classList.add('correct');
+                quizScore++;
+                createConfetti();
+            } else {
+                element.classList.add('wrong');
+            }
             
             setTimeout(() => {
-                el.style.animation = 'none';
-                el.offsetHeight; /* trigger reflow */
-                el.style.animation = 'typing 3s steps(40, end), blink-caret 0.75s step-end infinite';
-                el.textContent = text;
-                el.style.width = '100%';
-            }, 100);
-            
-            messageIndex = (messageIndex + 1) % messages.length;
+                element.parentElement.style.display = 'none';
+                currentQuestion++;
+                
+                if (currentQuestion <= 3) {
+                    document.getElementById('question' + currentQuestion).style.display = 'block';
+                } else {
+                    document.getElementById('quizComplete').style.display = 'block';
+                }
+            }, 800);
         }
 
-        // Reveal Poem Lines
-        const poemLines = [
-            "Kamu adalah matahari yang menerangi hariku ☀️",
-            "Kamu adalah bintang yang menuntunku di malam gelap ⭐",
-            "Kamu adalah alasan aku tersenyum setiap pagi 😊",
-            "Kamu adalah pilihanku, sekarang dan selamanya 💕"
-        ];
+        function resetQuiz() {
+            currentQuestion = 1;
+            quizScore = 0;
+            
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('question' + i).style.display = i === 1 ? 'block' : 'none';
+            }
+            document.getElementById('quizComplete').style.display = 'none';
+            
+            document.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+                opt.style.pointerEvents = 'auto';
+            });
+        }
 
-        function revealLine(element) {
-            const index = Array.from(element.parentElement.children).indexOf(element);
-            element.textContent = poemLines[index];
-            element.style.color = '#ffd93d';
-            element.style.fontWeight = 'bold';
+        // Love Letter
+        function showLetter() {
+            document.getElementById('loveLetter').classList.add('show');
             createConfetti();
         }
 
-        // Final Envelope
-        let envelopeOpened = false;
-        function openFinalEnvelope() {
-            if (envelopeOpened) return;
-            envelopeOpened = true;
+        // Floating Hearts - optimized
+        function createFloatingHearts() {
+            const hearts = ['💕', '💖', '💗', '💝', '💘'];
             
-            const letter = document.getElementById('finalLetter');
-            const text = document.getElementById('envelopeText');
-            
-            letter.style.transform = 'translateY(-200px)';
-            text.style.opacity = '0';
-            
-            setTimeout(() => {
-                grandFinale();
-            }, 1000);
-        }
-
-        // Heart Burst Effect
-        function createHeartBurst(element) {
-            const rect = element.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            
-            for (let i = 0; i < 8; i++) {
+            setInterval(() => {
                 const heart = document.createElement('div');
-                heart.className = 'heart-trail';
-                heart.innerHTML = '💕';
-                heart.style.left = centerX + 'px';
-                heart.style.top = centerY + 'px';
-                heart.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
-                heart.style.setProperty('--ty', (Math.random() - 0.5) * 100 + 'px');
+                heart.className = 'heart';
+                heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animation = `floatUp ${Math.random() * 3 + 4}s linear forwards`;
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
                 document.body.appendChild(heart);
                 
-                setTimeout(() => heart.remove(), 1000);
+                setTimeout(() => heart.remove(), 7000);
+            }, 800);
+        }
+
+        // Confetti - optimized
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff', '#ffffff'];
+            
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    
+                    const duration = Math.random() * 2 + 2;
+                    confetti.style.transition = `transform ${duration}s linear, opacity ${duration}s linear`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // Trigger animation
+                    requestAnimationFrame(() => {
+                        confetti.style.transform = `translateY(${window.innerHeight + 20}px) rotate(${Math.random() * 360}deg)`;
+                        confetti.style.opacity = '0';
+                    });
+                    
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }, i * 30);
             }
         }
 
         // Grand Finale
         function grandFinale() {
-            // Create massive confetti
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 5; i++) {
                 setTimeout(createConfetti, i * 200);
             }
             
-            // Create fireworks everywhere
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    showFireworks();
-                }, i * 300);
-            }
+            if (!isPlaying) toggleMusic();
             
-            // Play music if not playing
-            if (!isPlaying) {
-                toggleMusic();
-            }
-            
-            // Alert with love message
             setTimeout(() => {
-                alert('🎉 Happy Valentine\'s Day 2026! 🎉\n\nKamu adalah pilihanku, cintaku, dan segalanya bagiku!\n\nDengan Cinta,\nRidzz 💕');
-            }, 2000);
+                alert('🎉 Happy Valentine\'s Day 2026! 🎉\n\nKamu adalah pilihanku!\n\nDengan Cinta,\nRidzz 💕');
+            }, 1000);
         }
 
-        // Confetti Effect
-        function createConfetti() {
-            const colors = ['#ff6b6b', '#ffd93d', '#6bcf7f', '#4d96ff', '#ff8e8e', '#ffb4b4', '#ffffff'];
-            
-            for (let i = 0; i < 150; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.style.position = 'fixed';
-                    confetti.style.width = (Math.random() * 10 + 5) + 'px';
-                    confetti.style.height = (Math.random() * 10 + 5) + 'px';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.top = '-10px';
-                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-                    confetti.style.zIndex = '9999';
-                    confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear forwards`;
-                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-                    
-                    document.body.appendChild(confetti);
-                    
-                    setTimeout(() => confetti.remove(), 5000);
-                }, i * 5);
-            }
-        }
-
-        // Add confetti animation to styles dynamically
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes confetti-fall {
-                to {
-                    transform: translateY(100vh) rotate(720deg);
-                    opacity: 0;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Scroll to Section
-        function scrollToSection(index) {
-            const sections = document.querySelectorAll('section');
-            sections[index].scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Start Journey
-        function startJourney() {
-            scrollToSection(1);
-            createConfetti();
-            showFireworks();
-        }
-
-        // Mouse Trail Effect
-        document.addEventListener('mousemove', (e) => {
-            if (Math.random() > 0.9) {
-                const heart = document.createElement('div');
-                heart.className = 'heart-trail';
-                heart.innerHTML = '💕';
-                heart.style.left = e.pageX + 'px';
-                heart.style.top = e.pageY + 'px';
-                heart.style.fontSize = '16px';
-                document.body.appendChild(heart);
-                
-                setTimeout(() => heart.remove(), 1000);
-            }
-        });
-
-        // Add rose petals periodically
-        setInterval(() => {
-            const petal = document.createElement('div');
-            petal.className = 'petal';
-            petal.style.left = Math.random() * 100 + 'vw';
-            petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
-            petal.style.opacity = Math.random() * 0.6 + 0.4;
-            document.body.appendChild(petal);
-            
-            setTimeout(() => petal.remove(), 8000);
-        }, 2000);
-
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('bounce-in');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section > div').forEach(section => {
-            observer.observe(section);
-        });
+        // Prevent bounce on iOS
+        document.body.addEventListener('touchmove', function(e) {
+            if (e.target.closest('.carousel-container')) return;
+        }, { passive: true });
     </script>
 </body>
 </html>
